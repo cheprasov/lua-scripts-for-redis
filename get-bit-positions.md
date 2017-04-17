@@ -22,7 +22,7 @@ $Redis = ClientFactory::create();
 $Redis->set('bits', chr(0b11011011) . chr(0b00100100) . chr(0b10101010));
 
 $script = '<script here>';
-$res = $Redis->evalScript(script, ['bits'], [7, 10]);
+$res = $Redis->evalScript($script, ['bits'], [7, 10]);
 var_export($res);
 ```
 result:
@@ -65,7 +65,7 @@ for i = 1, limit do
     offset_byte = math.floor(pos / 8) + 1;
 
     local est;
-    local offset_bit = offset_byte* 8 - 1;
+    local offset_bit = offset_byte * 8 - 1;
 
     for j = pos, offset_bit do
         if (#ids == limit) then
