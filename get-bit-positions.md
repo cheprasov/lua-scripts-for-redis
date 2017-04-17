@@ -7,6 +7,8 @@ I think, this script is more useful than [BITPOS](https://redis.io/commands/bitp
 - offset - the offset is interpreted as count of bits (not bytes). ARGV[1]
 - count - max count of list with positions (offsets) of bit 1. ARGV[2]
 
+Returns a list with the positions (offset in bits) or empty list, if nothing found.
+
 ## PHP Example
 
 ```php
