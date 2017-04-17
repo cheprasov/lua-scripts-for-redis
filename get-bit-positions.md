@@ -68,19 +68,19 @@ for i = 1, limit do
     offset_byte = math.floor(pos / 8) + 1;
 
     local est;
-    local offset_bit = offset_byte* 8 - 1;
+    local offset_bit = offset_byte * 8 - 1;
 
     for j = pos, offset_bit do
         if (#ids == limit) then
             break;
         end;
         if (cache[j]) then
-            est = 1
+            ids[#ids + 1] = j;
         else
             est = redis.call("GETBIT", KEYS[1], j);
-        end;
-        if (est == 1) then
-            ids[#ids + 1] = j;
+            if (est == 1) then
+                ids[#ids + 1] = j;
+            end;
         end;
     end;
 
