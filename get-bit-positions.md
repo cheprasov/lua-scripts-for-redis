@@ -5,7 +5,7 @@ I think, this script is more useful than [BITPOS](https://redis.io/commands/bitp
 ## SCRIPT key offset limit
 - key - a key in redis storage. KEYS[1]
 - offset - the offset is interpreted as count of bits (not bytes). ARGV[1]
-- count - max count of list with positions (offsets) of bytes. ARGV[2]
+- count - max count of list with positions (offsets) of bit. ARGV[2]
 
 ## PHP Example
 
