@@ -1,5 +1,5 @@
 # GET-BIT-POSITIONS
-Current script finds setted bits in a key in a specified range.
+Current script finds setted bits by a key with a specified range.
 I think, this script is more useful than [BITPOS](https://redis.io/commands/bitpos) in [Redis](https://redis.io)
 
 ## SCRIPT key offset limit
