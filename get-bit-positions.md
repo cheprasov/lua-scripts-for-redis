@@ -40,7 +40,7 @@ array(
 );
 ```
 
-## SCRIPT
+## LUA script
 
 ```lua
 local offset = tonumber(ARGV[1]);
