@@ -45,6 +45,7 @@ local offset = tonumber(ARGV[1]);
 local limit = tonumber(ARGV[2]);
 local offset_byte = math.floor(offset / 8);
 local ids = {};
+local cache = {};
 
 for i = 1, limit do
 
@@ -58,6 +59,8 @@ for i = 1, limit do
         break;
     end;
 
+    cache[pos] = 1;
+
     if (pos < offset) then
         pos = offset;
     end;
@@ -65,13 +68,17 @@ for i = 1, limit do
     offset_byte = math.floor(pos / 8) + 1;
 
     local est;
-    local offset_bit = offset_byte * 8 - 1;
+    local offset_bit = offset_byte* 8 - 1;
 
     for j = pos, offset_bit do
         if (#ids == limit) then
             break;
         end;
-        est = redis.call("GETBIT", KEYS[1], j);
+        if (cache[j]) then
+            est = 1
+        else
+            est = redis.call("GETBIT", KEYS[1], j);
+        end;
         if (est == 1) then
             ids[#ids + 1] = j;
         end;
